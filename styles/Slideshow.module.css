@@ -1,0 +1,14 @@
+.container {
+  @apply my-0 mx-auto p-0 w-full;
+  list-style: none;
+}
+
+.slide > div {
+  @apply bg-no-repeat bg-cover flex items-center justify-center h-screen;
+  background-position: 50% 50%;
+}
+
+.slide span {
+  @apply rounded text-xl p-2 text-center text-white;
+  background-color: rgba(141, 174, 224, 0.5);
+}
