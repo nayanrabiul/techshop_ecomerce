@@ -1,12 +1,11 @@
 import ShowProductTiles from "../..//components/showProductTiles";
 import AdminLayout from "../../components/adminLayout";
 import Link from "next/link";
-import useRouter from 'next/router'
+import useRouter from "next/router";
 import Image from "next/image";
 
-
 export function Home({ products }) {
-    const router = useRouter;
+  const router = useRouter;
   return (
     <AdminLayout>
       <div className="bg-white">
@@ -47,7 +46,9 @@ export function Home({ products }) {
                     ৳ {product.price}
                   </p>
                   <button
-                    onClick={()=> router.push('/admin/productEdit/'+product.id)}
+                    onClick={() =>
+                      router.push("/admin/productEdit/" + product.id)
+                    }
                     className="p-2 m-2 bg-orange-400 rounded-md active:bg-orange-600"
                   >
                     Edit Product
@@ -64,7 +65,7 @@ export function Home({ products }) {
 
 export async function getServerSideProps(context) {
   var existingProduct = await fetch(
-    https://techshop-ecomerce.vercel.app/api/user/product/productsGet`
+    `https://techshop-ecomerce.vercel.app/api/user/product/productsGet`
   );
   const products = await existingProduct.json();
 

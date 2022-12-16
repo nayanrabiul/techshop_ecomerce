@@ -31,7 +31,7 @@ export function Layout({ title, children }) {
       </Head>
 
       <div className="flex min-h-screen flex-col justify-between mx-9">
-      <div className="sticky top-0 z-50 bg-white    ">
+        <div className="sticky top-0 z-50 bg-white    ">
           <CategoreyBar></CategoreyBar>
         </div>
         <header className="  bg-white ">
@@ -218,7 +218,6 @@ export function Layout({ title, children }) {
               </button>
             </Link>
           </nav>
-        
         </header>
 
         <main className="container m-auto mt-0 mx-8 self-center">
@@ -234,7 +233,7 @@ export function Layout({ title, children }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshop-ecomerce.vercel.app/api/admin/category`
   );
   const categoryes = await existingCategory.json();
   console.log(categoryes);

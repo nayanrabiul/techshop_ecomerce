@@ -14,7 +14,7 @@ function OrderHandle({ order }) {
 
   const cartItems = JSON.parse(order.productdetails);
   const shippingAddress = JSON.parse(order.extra_information);
-  const status =order.status;
+  const status = order.status;
 
   useEffect(() => {
     var tem = 0;
@@ -99,7 +99,7 @@ function OrderHandle({ order }) {
               className="m-4 p-2 w-full bg-green-500 col-span-2"
               onClick={() => {}}
             >
-              OrderConfirm 
+              OrderConfirm
             </button>
           ) : (
             <button
@@ -120,11 +120,10 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let order = await axios.post(
-    https://techshop-ecomerce.vercel.app/api/admin/order/oneOrderGet`,
+    `https://techshop-ecomerce.vercel.app/api/admin/order/oneOrderGet`,
     data
   );
   order = order.data;
-
 
   return {
     props: { order },

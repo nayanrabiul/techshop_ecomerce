@@ -23,7 +23,7 @@ export function Home({ products }) {
 
 export async function getServerSideProps(context) {
   var existingProduct = await fetch(
-    https://techshop-ecomerce.vercel.app/api/user/product/productsGet`
+    `https://techshop-ecomerce.vercel.app/api/user/product/productsGet`
   );
   const products = await existingProduct.json();
 

@@ -20,21 +20,18 @@ function OrderDetails({ orders }) {
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                   >
                     Order Id
-
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                   >
                     status
-
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                   >
-                   Delivery Location
-
+                    Delivery Location
                   </th>
                   <th
                     scope="col"
@@ -42,28 +39,27 @@ function OrderDetails({ orders }) {
                   >
                     User
                   </th>
-                 
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                
                 {orders.map((order) => (
-                  <tr className='hover:cursor-pointer' key={order.id} onClick={()=> router.push('/admin/order/'+order.id)}>
+                  <tr
+                    className="hover:cursor-pointer"
+                    key={order.id}
+                    onClick={() => router.push("/admin/order/" + order.id)}
+                  >
                     <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                       {order.id}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                    {order.status}
+                      {order.status}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                    {order.delivery_location}
+                      {order.delivery_location}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      
-                        {order.user_id}
-                      
+                      {order.user_id}
                     </td>
-                    
                   </tr>
                 ))}
               </tbody>
@@ -76,9 +72,11 @@ function OrderDetails({ orders }) {
 }
 
 export async function getServerSideProps(context) {
-  let order = await axios.get(https://techshop-ecomerce.vercel.app/api/admin/order/order`);
+  let order = await axios.get(
+    `https://techshop-ecomerce.vercel.app/api/admin/order/order`
+  );
 
-let orders = order.data
+  let orders = order.data;
   return {
     props: {
       orders,

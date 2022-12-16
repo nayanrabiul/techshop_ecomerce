@@ -240,12 +240,12 @@ export default function Upload({ categoryes, subcategoryes, product }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshop-ecomerce.vercel.app/api/admin/category`
   );
   const categoryes = await existingCategory.json();
 
   var existingSubCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
   );
   const subcategoryes = await existingSubCategory.json();
 
@@ -253,7 +253,7 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let axiosProduct = await axios.post(
-    https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
+    `https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
     data
   );
 

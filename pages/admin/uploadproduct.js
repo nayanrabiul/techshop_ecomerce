@@ -86,12 +86,10 @@ export default function Upload({ categoryes, subcategoryes }) {
       .catch((error) => {
         // console.error(error);
       });
-    
   };
 
   return (
     <AdminLayout>
-      
       <div className="m-4 p-4 bg-emerald-100">
         <h1 className="text-3xl m-3"> Product Details</h1>
         <form onSubmit={handleSubmit(submitHandler)} className="flex flex-col">
@@ -201,12 +199,12 @@ export default function Upload({ categoryes, subcategoryes }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshop-ecomerce.vercel.app/api/admin/category`
   );
   const categoryes = await existingCategory.json();
 
   var existingSubCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
   );
   const subcategoryes = await existingSubCategory.json();
 

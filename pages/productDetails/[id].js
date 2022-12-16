@@ -103,7 +103,7 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let axiosProduct = await axios.post(
-    https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
+    `https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
     data
   );
 

@@ -12,12 +12,10 @@ export default function CategoreyBar() {
   const [subcategoryes, setsubcategoryes] = useState([{}]);
   const [catSubcat, setcatSubcat] = useState([]);
 
-
-
   useEffect(() => {
     const dataFetch1 = async () => {
       const data = await (
-        await fetch("http://localhost:3000/api/admin/category")
+        await fetch("https://techshop-ecomerce.vercel.app/api/admin/category")
       ).json();
 
       // set state when the data received
@@ -25,7 +23,9 @@ export default function CategoreyBar() {
     };
     const dataFetch2 = async () => {
       const data = await (
-        await fetch(https://techshop-ecomerce.vercel.app/api/admin/subCategory`)
+        await fetch(
+          `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+        )
       ).json();
 
       // set state when the data received
@@ -45,14 +45,14 @@ export default function CategoreyBar() {
         })
       );
     }
-  }, [categoryes,subcategoryes]);
+  }, [categoryes, subcategoryes]);
 
   console.log(catSubcat);
 
   return (
     <div className="flex flex-wrap items-center justify-center  sticky top-0">
       {catSubcat.map((x) => (
-        <div className="dropdown inline-block relative mx-1" key={x} >
+        <div className="dropdown inline-block relative mx-1" key={x}>
           <button className="  py-2 px-4  inline-flex items-center">
             <span className="mr-1">{x.category}</span>
             <svg

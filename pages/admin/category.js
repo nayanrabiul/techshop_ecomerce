@@ -30,7 +30,7 @@ function CategoryScreen({ categoryes, subcategoryes }) {
     setCategoryName(selectedCategoryName[0].category);
   }
 
-  console.log(categoryes)
+  console.log(categoryes);
   return (
     <AdminLayout>
       <div className="flex flex-col">
@@ -39,7 +39,6 @@ function CategoryScreen({ categoryes, subcategoryes }) {
             <div key={cat.id}>
               <button
                 key={cat.id}
-                
                 className=" m-2 p-2 bg-green-200 rounded-md active:bg-blue-200 focus-within:bg-blue-400"
                 onClick={() => subCategorySelect(cat.id)}
               >
@@ -145,10 +144,10 @@ function CategoryScreen({ categoryes, subcategoryes }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshop-ecomerce.vercel.app/api/admin/category`
   );
   var existingSubCategory = await fetch(
-    https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
   );
   const categoryes = await existingCategory.json();
   const subcategoryes = await existingSubCategory.json();
