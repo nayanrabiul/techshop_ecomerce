@@ -80,7 +80,7 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let axiosProduct = await axios.post(
-    `http://localhost:3000/api/user/orderGetbyUserid`,
+    https://techshop-ecomerce.vercel.app/api/user/orderGetbyUserid`,
     data
   );
 

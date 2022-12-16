@@ -120,7 +120,7 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let order = await axios.post(
-    `http://localhost:3000/api/admin/order/oneOrderGet`,
+    https://techshop-ecomerce.vercel.app/api/admin/order/oneOrderGet`,
     data
   );
   order = order.data;

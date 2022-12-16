@@ -25,7 +25,7 @@ export default function CategoreyBar() {
     };
     const dataFetch2 = async () => {
       const data = await (
-        await fetch(`http://localhost:3000/api/admin/subCategory`)
+        await fetch(https://techshop-ecomerce.vercel.app/api/admin/subCategory`)
       ).json();
 
       // set state when the data received

@@ -234,7 +234,7 @@ export function Layout({ title, children }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    `http://localhost:3000/api/admin/category`
+    https://techshop-ecomerce.vercel.app/api/admin/category`
   );
   const categoryes = await existingCategory.json();
   console.log(categoryes);

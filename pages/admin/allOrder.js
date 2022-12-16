@@ -76,7 +76,7 @@ function OrderDetails({ orders }) {
 }
 
 export async function getServerSideProps(context) {
-  let order = await axios.get(`http://localhost:3000/api/admin/order/order`);
+  let order = await axios.get(https://techshop-ecomerce.vercel.app/api/admin/order/order`);
 
 let orders = order.data
   return {
