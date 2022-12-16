@@ -123,12 +123,8 @@ export async function getServerSideProps(context) {
     `http://localhost:3000/api/admin/order/oneOrderGet`,
     data
   );
-
   order = order.data;
 
-  // const images = await String(products.images);
-  // const imagesuro = await images.split(",");
-  // //console.log(imagesuro, "i");
 
   return {
     props: { order },

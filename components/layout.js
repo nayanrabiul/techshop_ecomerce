@@ -7,6 +7,11 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import state from "../utils/state";
+import CategoreyBar from "../pages/categoreyBar";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -18,14 +23,18 @@ export function Layout({ title, children }) {
   };
 
   return (
-    <>
+    <div className="mx-16">
       <Head>
         <title>{title ? title + " - GreenMart" : "GreenMart"}</title>
         <meta name="description" content="Biodegradable Marcketplace" />
         <link rel="icon" href="/undraw_environment_iaus.svg" />
       </Head>
+
       <div className="flex min-h-screen flex-col justify-between mx-9">
-        <header className=" top-0 z-50 bg-white ">
+      <div className="sticky top-0 z-50 bg-white    ">
+          <CategoreyBar></CategoreyBar>
+        </div>
+        <header className="  bg-white ">
           <nav className=" flex flex-row flex-wrap justify-center	 items-center px-4 md:px-8 shadow-md  bg-transparent ">
             <Link href={"/"}>
               <div className="p-2 m-1 bg-green-300 rounded-md hover:cursor-pointer flex justify-center items-center">
@@ -125,7 +134,7 @@ export function Layout({ title, children }) {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <link
+                            <Link
                               href="#"
                               className={classNames(
                                 active
@@ -135,7 +144,7 @@ export function Layout({ title, children }) {
                               )}
                             >
                               Previous Order
-                            </link>
+                            </Link>
                           )}
                         </Menu.Item>
                       </div>
@@ -143,7 +152,7 @@ export function Layout({ title, children }) {
                         <div className="py-1">
                           <Menu.Item>
                             {({ active }) => (
-                              <link
+                              <Link
                                 href="/admin"
                                 className={classNames(
                                   active
@@ -153,7 +162,7 @@ export function Layout({ title, children }) {
                                 )}
                               >
                                 Admin Dashbord
-                              </link>
+                              </Link>
                             )}
                           </Menu.Item>
                         </div>
@@ -161,7 +170,7 @@ export function Layout({ title, children }) {
                       <div className="py-1">
                         <Menu.Item>
                           {({ active }) => (
-                            <link
+                            <Link
                               href="#"
                               onClick={logoutClickHandler}
                               className={classNames(
@@ -172,7 +181,7 @@ export function Layout({ title, children }) {
                               )}
                             >
                               Logout
-                            </link>
+                            </Link>
                           )}
                         </Menu.Item>
                       </div>
@@ -209,7 +218,9 @@ export function Layout({ title, children }) {
               </button>
             </Link>
           </nav>
+        
         </header>
+
         <main className="container m-auto mt-0 mx-8 self-center">
           {children}
         </main>
@@ -217,7 +228,7 @@ export function Layout({ title, children }) {
           <p>Copyright © 2022 Amazona</p>
         </footer>
       </div>
-    </>
+    </div>
   );
 }
 

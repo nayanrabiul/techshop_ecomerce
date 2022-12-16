@@ -52,7 +52,7 @@ export default function CategoreyBar() {
   return (
     <div className="flex flex-wrap items-center justify-center  sticky top-0">
       {catSubcat.map((x) => (
-        <div className="dropdown inline-block relative" key={x}>
+        <div className="dropdown inline-block relative mx-1" key={x} >
           <button className="  py-2 px-4  inline-flex items-center">
             <span className="mr-1">{x.category}</span>
             <svg

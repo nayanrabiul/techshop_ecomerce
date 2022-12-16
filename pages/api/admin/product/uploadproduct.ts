@@ -2,7 +2,7 @@ import { NextApiHandler, NextApiRequest } from "next";
 import formidable from "formidable";
 import path from "path";
 import fs from "fs/promises";
-import Connection from "../../../../utils/db";
+import pool from "../../../../utils/db";
 
 export const config = {
   api: {
@@ -10,13 +10,10 @@ export const config = {
   },
 };
 type Field = {
-  [key: string]: any; 
-  
+  [key: string]: any;
 };
 
-var field: Field = {
-
-};
+var field: Field = {};
 
 var file = [];
 
@@ -46,7 +43,6 @@ const readFile = (
 const handler: NextApiHandler = async (req, res) => {
   await readFile(req, true);
   if (req.method == "POST") {
-    //field contais field data and file contain name of the file.push it to database.
     if (
       !field.title &&
       !field.stock &&
@@ -57,48 +53,45 @@ const handler: NextApiHandler = async (req, res) => {
       res.json({ ok: "error" });
       return;
     }
-    Connection.query(
-      "INSERT INTO products(title,stock,price,descriptions,images,subcategory_id) VALUES (?,?,?,?,?,?)",
-      [
-        field.title,
-        field.stock,
-        field.price,
-        field.descriptions,
-        file.toString(),
-        field.subcategory_id,
-      ]
-    );
 
-    res.json({ ok: "ok" });
+    pool.getConnection(function (err, conn) {
+      conn.query(
+        "INSERT INTO products(title,stock,price,descriptions,images,subcategory_id) VALUES (?,?,?,?,?,?)",
+        [
+          field.title,
+          field.stock,
+          field.price,
+          field.descriptions,
+          file.toString(),
+          field.subcategory_id,
+        ],
+        (err, result) => {
+          res.send(result);
+        }
+      );
+      // @ts-ignore
+      pool.releaseConnection(conn);
+    });
   }
   if (req.method == "PUT") {
-    // await readFile(req, true);
-    // //field contais field data and file contain name of the file.push it to database.
-    // if (
-    //   !field.title &&
-    //   !field.stock &&
-    //   !field.price &&
-    //   !field.descriptions
-
-    // ) {
-    //   res.json({ ok: "error" });
-    //   return;
-    // }
-    console.log(field.descriptions);
-
-    Connection.query(
-      "UPDATE products SET title = ?, stock=?, price = ?, descriptions = ?,subcategory_id = ? WHERE products.id = ?",
-      [
-        String(field.title),
-        String(field.stock),
-        String(field.price),
-        String(field.descriptions),
-        String(field.subcategory_id),
-        String(field.product_id),
-      ]
-    );
-
-    res.json({ ok: "ok" });
+    pool.getConnection(function (err, conn) {
+      conn.query(
+        "UPDATE products SET title = ?, stock=?, price = ?, descriptions = ?,subcategory_id = ? WHERE products.id = ?",
+        [
+          String(field.title),
+          String(field.stock),
+          String(field.price),
+          String(field.descriptions),
+          String(field.subcategory_id),
+          String(field.product_id),
+        ],
+        (err, result) => {
+          res.json({ ok: "ok" });
+        }
+      );
+      //@ts-ignore
+      pool.releaseConnection(conn);
+    });
   }
 };
 

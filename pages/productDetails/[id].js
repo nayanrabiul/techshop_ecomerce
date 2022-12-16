@@ -4,8 +4,7 @@ import Slideshow from "../../components/slideShow";
 import axios from "axios";
 import state from "../../utils/state";
 
-import Parser from 'html-react-parser';
-
+import Parser from "html-react-parser";
 
 function Paoduct({ products }) {
   const product = products;
@@ -15,13 +14,17 @@ function Paoduct({ products }) {
     img[i] = "/uploaded_images/" + images[i];
   }
 
-  
   const { dispatch } = state;
 
   const [quantity, setQuantity] = useState(1);
   return (
     <Layout title={"product Details"}>
-      <Slideshow images={img}> </Slideshow>
+      <div className="grid grid-cols-6 gap-16 mt-">
+        <div className=" col-span-3 col-start-3 col-end-5">
+          <Slideshow images={img}> </Slideshow>
+        </div>
+      </div>
+
       <div className=" m-4  shadow-transparent p-2 rounded-md">
         <h1 className="text-3xl">{product.title}</h1>
         <div className="flex flex-row items-center justify-between m-2">
@@ -42,7 +45,7 @@ function Paoduct({ products }) {
                   className="w-6 h-6"
                 >
                   <path
-                    strokelinecap="round"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M19.5 12h-15"
                   />
@@ -66,7 +69,7 @@ function Paoduct({ products }) {
                   className="w-6 h-6"
                 >
                   <path
-                    strokelinecap="round"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M12 4.5v15m7.5-7.5h-15"
                   />
@@ -90,9 +93,6 @@ function Paoduct({ products }) {
       <div className=" m-4 shadow-inner p-2 rounded-md ">
         <h1 className="text-3xl">Product description</h1>
         <div>{Parser(product.descriptions)}</div>
-        
-       
-        
       </div>
     </Layout>
   );

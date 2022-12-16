@@ -30,18 +30,20 @@ function CategoryScreen({ categoryes, subcategoryes }) {
     setCategoryName(selectedCategoryName[0].category);
   }
 
+  console.log(categoryes)
   return (
     <AdminLayout>
       <div className="flex flex-col">
         <div className="max-w-full mx-4 bg-gray-100 flex flex-wrap items-center ">
           {categoryes.map((cat) => {
-            <div>
+            <div key={cat.id}>
               <button
                 key={cat.id}
+                
                 className=" m-2 p-2 bg-green-200 rounded-md active:bg-blue-200 focus-within:bg-blue-400"
                 onClick={() => subCategorySelect(cat.id)}
               >
-                {cat.category}
+                {cat.category}a
               </button>
             </div>;
           })}

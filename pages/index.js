@@ -1,8 +1,7 @@
 import Slideshow from "../components/slideShow";
 import ShowProductTiles from "../components/showProductTiles";
-import state from "../utils/state";
+
 import Layout from "../components/layout";
-import CategoreyBar from "./categoreyBar";
 
 const images = [
   "/home_slide/COLMI_P28_Plus_big_banner_1_.jpg",
@@ -16,9 +15,6 @@ const images = [
 export function Home({ products }) {
   return (
     <Layout>
-      <div className="sticky top-0 z-50 bg-white  shadow-lg mb-1">
-        <CategoreyBar></CategoreyBar>
-      </div>
       <Slideshow images={images}> </Slideshow>
       <ShowProductTiles products={products}></ShowProductTiles>
     </Layout>

@@ -25,9 +25,9 @@ async function handler(req, res) {
   const existingUser = Connection.query("SELECT * FROM users where email=?", [
     email,
   ]);
-  console.log(existingUser)
+  console.log(existingUser);
 
-  if (existingUser.length >0 ) {
+  if (existingUser.length > 0) {
     res.status(422).json({ message: "User exists already!" });
     return;
   }
@@ -39,9 +39,10 @@ async function handler(req, res) {
     "INSERT INTO users(name,email,password,isAdmin) VALUES (?,?,?,?)",
     [name, email, h_password, "false"]
   );
+  Connection.release;
 
   res.status(201).send({
-    message: "Created user!"
+    message: "Created user!",
   });
 }
 

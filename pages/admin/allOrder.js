@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import AdminLayout from "../../components/adminLayout";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import axios from "axios";
 
 function OrderDetails({ orders }) {
-  let router= useRouter()
+  let router = useRouter();
 
   return (
     <AdminLayout>
@@ -75,9 +76,9 @@ function OrderDetails({ orders }) {
 }
 
 export async function getServerSideProps(context) {
-  var order = await fetch(`http://localhost:3000/api/admin/order/order`);
-  const orders = await order.json();
-  // console.log(orders);
+  let order = await axios.get(`http://localhost:3000/api/admin/order/order`);
+
+let orders = order.data
   return {
     props: {
       orders,

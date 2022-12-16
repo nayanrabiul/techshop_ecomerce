@@ -10,15 +10,9 @@ const Slideshow = ({ images }) => {
       <div className="slide-container">
         <Fade>
           {images.map((img, index) => (
-            <div className="each-fade max-w-full"  key={index}>
-              <div className="image-container relative">
-                <Image
-                  src={img}
-                  alt="alt"
-                 
-                  height={500}
-                  width={1000}
-                />
+            <div className="each-fade max-w-full" key={index}>
+              <div className="image-container flex flex-row items-center justify-between">
+                <Image src={img} alt="alt" height={200} width={1280} />
               </div>
               <h2>{img.caption}</h2>
             </div>

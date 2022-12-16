@@ -1,9 +1,13 @@
+import pool from "../../../../utils/db";
 
-import Connection from "../../../../utils/db";
-
-async function handler(req, res) {
-  const result = Connection.query("SELECT * FROM products");
-  res.status(201).send(result);
+export default async function handler(req, res) {
+  return new Promise((resolve, reject) => {
+    pool.getConnection(function (err, conn) {
+      conn.query("SELECT * FROM products", (error, results) => {
+         res.status(201).json(results);
+      });
+      pool.releaseConnection(conn);
+      resolve();
+    });
+  });
 }
-
-export default handler;
