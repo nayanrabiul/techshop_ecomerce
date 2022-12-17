@@ -21,12 +21,19 @@ export default function Order() {
       tem = tem + cartItems[i].price * cartItems[i].qty;
     }
     setTotal_price(tem);
-  }, [shippingAddress, cartItems]);
+  }, [cartItems]);
 
   const handleOrder = () => {
     const user_id = session.user.id;
     const data = { cartItems, shippingAddress, extrainformation, user_id };
-    axios.post("/api/admin/order/order", data);
+    console.log(
+      cartItems,
+      shippingAddress,
+      extrainformation,
+      user_id,
+      "aaaaaaaa"
+    );
+    axios.post("https://techshopapi.imnayan.xyz/api/admin/order/order", data);
   };
 
   return (
@@ -35,16 +42,24 @@ export default function Order() {
         {/* this is ordered product details and ammount and cupon */}
         <div>
           {cartItems.map((product) => (
-            <div className="p-2 m-4 shadow rounded-md flex flex-row items-center justify-between" key={product.id}>
+            <div
+              className="p-2 m-4 shadow rounded-md flex flex-row items-center justify-between"
+              key={product.id}
+            >
               <div className="flex flex-row items-center" key={product.id}>
-                <Image key={product.id}
+                <Image
+                  key={product.id}
                   className="m-2"
-                  src={"/uploaded_images/" + product.images.split(",")[0]}
+                  src={`https://techshopapi.imnayan.xyz/public/${
+                    product.images.split(",")[0]
+                  }`}
                   height={65}
                   width={65}
                   alt={"product order page image"}
                 ></Image>
-                <h3 className="m-2" key={product.id}>{product.title}</h3>
+                <h3 className="m-2" key={product.id}>
+                  {product.title}
+                </h3>
               </div>
 
               <div className="flex flex-row">

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 function Paoduct({ orders }) {
   const router = useRouter();
-  console.log(orders);
+
   return (
     <div className="m-4 p-2 flex flex-col">
       <div className="m-2 p-2 flex flex-row">
@@ -74,7 +74,7 @@ export async function getServerSideProps(context) {
   const data = { id: id };
 
   let axiosProduct = await axios.post(
-    `https://techshop-ecomerce.vercel.app/api/user/orderGetbyUserid`,
+    `https://techshopapi.imnayan.xyz/api/user/orderGetbyUserid`,
     data
   );
 

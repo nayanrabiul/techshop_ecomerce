@@ -30,7 +30,7 @@ export default function SubCategory({ subCategoryArray }) {
             <tr>
               <td className="w-1/3 text-left py-3 px-4">{x.subcategory}</td>
               <td className="w-1/3 text-left py-3 px-4">
-                {console.log(x.subcategory)}
+   
                 <EditSubCategoryModal
                   subcategory={x.subcategory}
                 ></EditSubCategoryModal>
@@ -42,7 +42,7 @@ export default function SubCategory({ subCategoryArray }) {
                     {
                       e.preventDefault();
                       try {
-                        console.log(x.subcategory);
+              
 
                         axios.delete("/api/admin/subCategory", {
                           data: {

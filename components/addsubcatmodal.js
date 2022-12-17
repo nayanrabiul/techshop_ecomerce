@@ -13,7 +13,7 @@ export default function AddSubCatModal({cat_id}) {
   const formHandler = (e) => {
     setOpen(false);
     e.preventDefault();
-    console.log(categoryName);
+
 
     try {
       axios.post("/api/admin/subCategory", {

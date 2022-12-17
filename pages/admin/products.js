@@ -4,8 +4,9 @@ import Link from "next/link";
 import useRouter from "next/router";
 import Image from "next/image";
 
-export function Home({ products }) {
+function Home({ products }) {
   const router = useRouter;
+
   return (
     <AdminLayout>
       <div className="bg-white">
@@ -24,7 +25,9 @@ export function Home({ products }) {
                 <div className="h-404 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-40">
                   <Link href={`/productDetails/${product.id}`}>
                     <Image
-                      src={`/uploaded_images/` + product.images.split(",")[0]}
+                      src={`https://techshopapi.imnayan.xyz/public/${
+                        product.images.split(",")[0]
+                      }`}
                       alt={product.title}
                       height={100}
                       width={100}
@@ -65,7 +68,7 @@ export function Home({ products }) {
 
 export async function getServerSideProps(context) {
   var existingProduct = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/user/product/productsGet`
+    `https://techshopapi.imnayan.xyz/api/user/product/productsGet`
   );
   const products = await existingProduct.json();
 
@@ -76,4 +79,5 @@ export async function getServerSideProps(context) {
   };
 }
 
+Home.auth = { adminOnly: true };
 export default Home;

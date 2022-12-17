@@ -11,7 +11,7 @@ export default function EditSubCategoryModal({subcategory}) {
   const formHandler = (e) => {
     setOpen(false);
     e.preventDefault();
-    console.log(name);
+
 
     try {
       axios.put("/api/admin/subCategory", {

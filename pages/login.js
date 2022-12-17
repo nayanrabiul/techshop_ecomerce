@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import getError from "../utils/error"
 
 export default function LogIn() {
   const { data: session } = useSession();
@@ -30,11 +31,12 @@ export default function LogIn() {
         email,
         password,
       });
+  
       if (result.error) {
         toast.error(result.error);
       }
     } catch (err) {
-      toast.error(getError(err));
+     console.log(err)
     }
   };
 
@@ -115,5 +117,5 @@ export default function LogIn() {
         </div>
       </div>
     </>
-  )
+  );
 }

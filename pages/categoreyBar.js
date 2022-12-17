@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-import useSWR from "swr";
-import { data } from "autoprefixer";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -13,30 +11,17 @@ export default function CategoreyBar() {
   const [catSubcat, setcatSubcat] = useState([]);
 
   useEffect(() => {
-    const dataFetch1 = async () => {
-      const data = await (
-        await fetch("https://techshop-ecomerce.vercel.app/api/admin/category")
-      ).json();
+    (async () => {
+      var data1 = await axios(`https://techshopapi.imnayan.xyz/api/admin/category`);
+      setcategoryes(data1.data);
 
-      // set state when the data received
-      setcategoryes(data);
-    };
-    const dataFetch2 = async () => {
-      const data = await (
-        await fetch(
-          `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
-        )
-      ).json();
-
-      // set state when the data received
-      setsubcategoryes(data);
-    };
-
-    dataFetch1();
-    dataFetch2();
+      var data2 = await axios(`https://techshopapi.imnayan.xyz/api/admin/subCategory`);
+      setsubcategoryes(data2.data);
+    })();
   }, []);
 
   useEffect(() => {
+
     if (categoryes && subcategoryes) {
       setcatSubcat(
         categoryes.map((element) => {
@@ -47,12 +32,10 @@ export default function CategoreyBar() {
     }
   }, [categoryes, subcategoryes]);
 
-  console.log(catSubcat);
-
   return (
     <div className="flex flex-wrap items-center justify-center  sticky top-0">
       {catSubcat.map((x) => (
-        <div className="dropdown inline-block relative mx-1" key={x}>
+        <div className="dropdown inline-block relative mx-1" key={x.id}>
           <button className="  py-2 px-4  inline-flex items-center">
             <span className="mr-1">{x.category}</span>
             <svg
@@ -80,3 +63,4 @@ export default function CategoreyBar() {
     </div>
   );
 }
+

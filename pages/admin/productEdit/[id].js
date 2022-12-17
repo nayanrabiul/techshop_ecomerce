@@ -42,12 +42,11 @@ const formats = [
 ];
 
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+
 import axios from "axios";
 import AdminLayout from "../../../components/adminLayout";
 
 const getCategoryandSubcategory = (product, categoryes, subcategoryes) => {
-  // console.log(product, categoryes, subcategoryes);
   let subCategory = "";
   let category_id = "";
   let subcategory_id = product.subcategory_id;
@@ -66,7 +65,7 @@ const getCategoryandSubcategory = (product, categoryes, subcategoryes) => {
   return { category, subCategory, category_id };
 };
 
-export default function Upload({ categoryes, subcategoryes, product }) {
+function Upload({ categoryes, subcategoryes, product }) {
   const [title, settitle] = useState(product.title);
   const [stock, setstock] = useState(product.stock == "true" ? true : false);
   const [price, setprice] = useState(product.price);
@@ -94,25 +93,15 @@ export default function Upload({ categoryes, subcategoryes, product }) {
     form.append("subcategory_id", subcategory_id);
     form.append("product_id", product_id);
 
-    console.log(
-      title,
-      "\n",
-      stock,
-      "\n",
-      price,
-      "\n",
-      subcategory_id,
-      "\n",
-      product.id,
-      "\n",
-      descriptions
-    );
     // for (var i = 0; i < data.file.length; i++) {
     //   form.append(`myImage` + i, data.file[i]);
     // }
 
     axios
-      .put("/api/admin/product/uploadproduct", form)
+      .put(
+        "https://techshopapi.imnayan.xyz/api/admin/product/uploadproduct",
+        form
+      )
       .then((response) => {
         //console.log(response);
       })
@@ -216,14 +205,6 @@ export default function Upload({ categoryes, subcategoryes, product }) {
             theme="snow"
           />
 
-          {/* <input
-            className="m-1 p-2  "
-            type="file"
-            {...register("file")}
-            accept="image/png, image/jpeg"
-            multiple
-          ></input>
-          {errors.file && <span>{errors.file.message}</span>} */}
           {"File editing added letter"}
 
           <button
@@ -239,22 +220,20 @@ export default function Upload({ categoryes, subcategoryes, product }) {
 }
 
 export async function getServerSideProps(context) {
-  var existingCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/category`
+  var existingCategory = await axios.get(
+    `https://techshopapi.imnayan.xyz/api/admin/category`
   );
-  const categoryes = await existingCategory.json();
+  const categoryes = existingCategory.data;
 
-  var existingSubCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+  var existingSubCategory = await axios.get(
+    `https://techshopapi.imnayan.xyz/api/admin/subCategory`
   );
-  const subcategoryes = await existingSubCategory.json();
+  const subcategoryes = existingSubCategory.data;
 
   const id = context.params.id;
-  const data = { id: id };
 
-  let axiosProduct = await axios.post(
-    `https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
-    data
+  let axiosProduct = await axios.get(
+    `https://techshopapi.imnayan.xyz/api/user/product/oneProductGet?id=${id}`
   );
 
   let product = axiosProduct.data;
@@ -271,3 +250,6 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+Upload.auth = { adminOnly: true };
+export default Upload;

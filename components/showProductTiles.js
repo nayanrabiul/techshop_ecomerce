@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import  state  from '../utils/state'
+import state from "../utils/state";
 
 export function ShowProductTiles({ products }) {
-
-  const {useStoreState,dispatch} = state
+  const { useStoreState, dispatch } = state;
 
   return (
     <div className="bg-white">
@@ -20,7 +19,9 @@ export function ShowProductTiles({ products }) {
               <div className="h-404 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-40">
                 <Link href={`/productDetails/${product.id}`}>
                   <Image
-                    src={`/uploaded_images/` + product.images.split(",")[0]}
+                    src={`https://techshopapi.imnayan.xyz/public/${
+                      product.images.split(",")[0]
+                    }`}
                     alt={product.title}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                     height={160}
@@ -41,7 +42,12 @@ export function ShowProductTiles({ products }) {
                 <p className="text-sm font-medium text-gray-900">
                   ৳ {product.price}
                 </p>
-                <button onClick={() => dispatch({ type: 'onAdd', payload:product })} className="p-2 m-2 bg-orange-400 rounded-md active:bg-orange-600">Add to cart</button>
+                <button
+                  onClick={() => dispatch({ type: "onAdd", payload: product })}
+                  className="p-2 m-2 bg-orange-400 rounded-md active:bg-orange-600"
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           ))}
@@ -50,7 +56,6 @@ export function ShowProductTiles({ products }) {
     </div>
   );
 }
-
 
 ShowProductTiles.auth = { adminOnly: false };
 export default ShowProductTiles;

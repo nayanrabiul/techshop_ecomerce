@@ -48,7 +48,7 @@ const formats = [
   "video",
 ];
 
-export default function Upload({ categoryes, subcategoryes }) {
+function Upload({ categoryes, subcategoryes }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState("");
@@ -75,11 +75,14 @@ export default function Upload({ categoryes, subcategoryes }) {
     form.append("price", price);
     form.append("descriptions", value);
     for (var i = 0; i < data.file.length; i++) {
-      form.append(`myImage` + i, data.file[i]);
+      form.append(`myImage`, data.file[i]);
     }
 
     await axios
-      .post("/api/admin/product/uploadproduct", form)
+      .post(
+        "https://techshopapi.imnayan.xyz/api/admin/product/uploadproduct",
+        form
+      )
       .then((response) => {
         //console.log(response);
       })
@@ -199,12 +202,12 @@ export default function Upload({ categoryes, subcategoryes }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshopapi.imnayan.xyz/api/admin/category`
   );
   const categoryes = await existingCategory.json();
 
   var existingSubCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+    `https://techshopapi.imnayan.xyz/api/admin/subCategory`
   );
   const subcategoryes = await existingSubCategory.json();
 
@@ -215,3 +218,6 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+Upload.auth = { adminOnly: true };
+export default Upload;

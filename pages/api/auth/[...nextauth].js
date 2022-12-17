@@ -1,7 +1,7 @@
+import axios from "axios";
 import bcryptjs from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import Connection from "../../../utils/db";
 
 export default NextAuth({
   session: {
@@ -23,20 +23,18 @@ export default NextAuth({
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        var user = Connection.query("SELECT * FROM `users` WHERE email=?", [
-          credentials.email,
-        ]);
-        Connection.release;
-        user = user[0];
+        var user = await axios.get(
+          `https://techshopapi.imnayan.xyz/api/auth/nextauth?email=${credentials.email}`
+        );
+        user = user.data;
 
-        console.log(user, "user,36");
         if (user && bcryptjs.compareSync(credentials.password, user.password)) {
           return {
             id: user.id,
             name: user.name,
             email: user.email,
             image: "f",
-            isAdmin: user.isAdmin,
+            isAdmin: user.isAdmin == "true" ? true : false,
           };
         }
         throw new Error("Invalid email or password");

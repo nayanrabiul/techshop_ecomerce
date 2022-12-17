@@ -73,7 +73,7 @@ function OrderDetails({ orders }) {
 
 export async function getServerSideProps(context) {
   let order = await axios.get(
-    `https://techshop-ecomerce.vercel.app/api/admin/order/order`
+    `https://techshopapi.imnayan.xyz/api/admin/order/order`
   );
 
   let orders = order.data;
@@ -84,4 +84,5 @@ export async function getServerSideProps(context) {
   };
 }
 
+OrderDetails.auth = { adminOnly: true };
 export default OrderDetails;

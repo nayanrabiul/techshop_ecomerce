@@ -30,7 +30,6 @@ function CategoryScreen({ categoryes, subcategoryes }) {
     setCategoryName(selectedCategoryName[0].category);
   }
 
-  console.log(categoryes);
   return (
     <AdminLayout>
       <div className="flex flex-col">
@@ -62,7 +61,7 @@ function CategoryScreen({ categoryes, subcategoryes }) {
                   className="ml-4"
                   onSubmit={(e) => {
                     e.preventDefault();
-                    console.log(editedCategoryName.current.value);
+
                     if (!editedCategoryName.current.value) {
                       alert("Enter A Value");
                     } else {
@@ -73,9 +72,7 @@ function CategoryScreen({ categoryes, subcategoryes }) {
                         });
                         setEditEnable(false);
                         window.location.reload(false);
-                      } catch (e) {
-                        console.log(e);
-                      }
+                      } catch (e) {}
                     }
                   }}
                 >
@@ -103,8 +100,6 @@ function CategoryScreen({ categoryes, subcategoryes }) {
                   {
                     e.preventDefault();
                     try {
-                      console.log(categoryName);
-
                       axios.delete("/api/admin/category", {
                         data: {
                           name: categoryName,
@@ -112,9 +107,7 @@ function CategoryScreen({ categoryes, subcategoryes }) {
                       });
 
                       window.location.reload(false);
-                    } catch (e) {
-                      console.log(e);
-                    }
+                    } catch (e) {}
                   }
                 }}
               >
@@ -144,15 +137,14 @@ function CategoryScreen({ categoryes, subcategoryes }) {
 
 export async function getServerSideProps(context) {
   var existingCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/category`
+    `https://techshopapi.imnayan.xyz/api/admin/category`
   );
   var existingSubCategory = await fetch(
-    `https://techshop-ecomerce.vercel.app/api/admin/subCategory`
+    `https://techshopapi.imnayan.xyz/api/admin/subCategory`
   );
   const categoryes = await existingCategory.json();
   const subcategoryes = await existingSubCategory.json();
 
-  //console.log(categoryes);
   return {
     props: {
       categoryes,

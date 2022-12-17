@@ -11,7 +11,7 @@ function Paoduct({ products }) {
   const img = [];
   const images = products.images.split(",");
   for (let i = 0; i < images.length; i++) {
-    img[i] = "/uploaded_images/" + images[i];
+    img[i] = images[i];
   }
 
   const { dispatch } = state;
@@ -100,11 +100,9 @@ function Paoduct({ products }) {
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
-  const data = { id: id };
 
-  let axiosProduct = await axios.post(
-    `https://techshop-ecomerce.vercel.app/api/user/product/oneProductGet`,
-    data
+  let axiosProduct = await axios.get(
+    `https://techshopapi.imnayan.xyz/api/user/product/oneProductGet?id=${id}`
   );
 
   let products = axiosProduct.data;
