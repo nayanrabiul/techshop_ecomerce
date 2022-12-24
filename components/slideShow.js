@@ -10,7 +10,7 @@ const Slideshow = ({ images }) => {
       <Fade className="mx-8">
         {images.map((img, index) => (
 
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-row items-center justify-center" key={index}>
               <Image
                 src={`https://techshopapi.imnayan.xyz/public/${img}`}
                 alt="alt"
