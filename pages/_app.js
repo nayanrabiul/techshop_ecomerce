@@ -1,13 +1,11 @@
 import "../styles/globals.css";
 import { SessionProvider, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Layout from "../components/layout";
 import state from "../utils/state";
 import { useEffect } from "react";
-
+import { ThemeProvider } from "@material-tailwind/react";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-
   //for initialize cart items
   const { dispatch } = state;
   useEffect(() => {
@@ -21,11 +19,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SessionProvider session={session}>
       {Component.auth ? (
         <Auth adminOnly={Component.auth.adminOnly}>
+          <ThemeProvider>
             <Component {...pageProps} />
-          
+          </ThemeProvider>
         </Auth>
       ) : (
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
       )}
     </SessionProvider>
   );

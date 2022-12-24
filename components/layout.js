@@ -4,16 +4,35 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import state from "../utils/state";
 import CategoreyBar from "../pages/categoreyBar";
+
+import {
+  Navbar,
+  MobileNav,
+  Typography,
+  Button,
+  IconButton,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export function Layout({ title, children }) {
+  const [openNav, setOpenNav] = useState(false);
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+  }, []);
+
   const { status, data: session } = useSession();
 
   const { useStoreState } = state;
@@ -23,19 +42,16 @@ export function Layout({ title, children }) {
   };
 
   return (
-    <div className="mx-16">
+    <div className="">
       <Head>
         <title>{title ? title + " - GreenMart" : "GreenMart"}</title>
         <meta name="description" content="Biodegradable Marcketplace" />
         <link rel="icon" href="/undraw_environment_iaus.svg" />
       </Head>
 
-      <div className="flex min-h-screen flex-col justify-between mx-9">
-        <div className="sticky top-0 z-50 bg-white    ">
-          <CategoreyBar></CategoreyBar>
-        </div>
-        <header className="  bg-white ">
-          <nav className=" flex flex-row flex-wrap justify-center	 items-center px-4 md:px-8 shadow-md  bg-transparent ">
+      <Navbar className="m-1 mx-auto  py-0 px-4  lg:px-8 lg:py-2 sticky  ">
+        <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+          <div>
             <Link href={"/"}>
               <div className="p-2 m-1 bg-green-300 rounded-md hover:cursor-pointer flex justify-center items-center">
                 <Image
@@ -46,155 +62,12 @@ export function Layout({ title, children }) {
                 ></Image>
               </div>
             </Link>
-
-            {/* drop down */}
-            <div>
-              {status === "loading" ? (
-                "Loading"
-              ) : session?.user ? (
-                <Menu
-                  as="div"
-                  className="relative inline-block text-left px-2 "
-                >
-                  <div>
-                    <Menu.Button className="inline-flex w-full justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-                      <Image
-                        src="/profile.svg"
-                        alt="alt value"
-                        width={20}
-                        height={20}
-                        className=""
-                      ></Image>
-                      {session.user.name}
-                      <ChevronDownIcon
-                        className="-mr-1 ml-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </Menu.Button>
-                  </div>
-
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href="#"
-                              className={classNames(
-                                active
-                                  ? "bg-green-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Edit Profile
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        {/* <Menu.Item>
-                          {({ active }) => (
-                            link
-                              href="#"
-                              className={classNames(
-                                active
-                                  ? "bg-green-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Change Password
-                            </link>
-                          )}
-                        </Menu.Item> */}
-                      </div>
-
-                      <div className="py-1">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href={`/order/` + session.user.id}
-                              className={classNames(
-                                active
-                                  ? "bg-green-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Order Status
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href="#"
-                              className={classNames(
-                                active
-                                  ? "bg-green-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Previous Order
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      </div>
-                      {session.user.isAdmin && (
-                        <div className="py-1">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                href="/admin"
-                                className={classNames(
-                                  active
-                                    ? "bg-green-100 text-gray-900"
-                                    : "text-gray-700",
-                                  "block px-4 py-2 text-sm"
-                                )}
-                              >
-                                Admin Dashbord
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        </div>
-                      )}
-                      <div className="py-1">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href="#"
-                              onClick={logoutClickHandler}
-                              className={classNames(
-                                active
-                                  ? "bg-green-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Logout
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      </div>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              ) : (
-                <button className="hover:bg-green-100  p-1 px-2 rounded-md">
-                  <Link href={"/login"}>Login</Link>
-                </button>
-              )}
-            </div>
-
+          </div>
+          {/* <div>
+         
+            <CategoreyBar></CategoreyBar>
+          </div> */}
+          <div className="flex flex-row">
             <Link href={"/order"}>
               <button className="p-2 m-1 bg-green-100 rounded-md  flex flex-row">
                 <svg
@@ -217,16 +90,64 @@ export function Layout({ title, children }) {
                 </span>
               </button>
             </Link>
-          </nav>
-        </header>
 
-        <main className="container m-auto mt-0 mx-8 self-center">
-          {children}
-        </main>
-        <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 Amazona</p>
-        </footer>
-      </div>
+            {status === "loading" ? (
+              "Loading"
+            ) : session?.user ? (
+              <Menu>
+                <MenuHandler>
+                  <button className="flex flex-row items-center  border-2 border-green-300 rounded-md">
+                    <Image
+                      src="/profile.svg"
+                      alt="alt value"
+                      width={20}
+                      height={20}
+                      className=""
+                    ></Image>
+                    {session.user.name}
+                    <ChevronDownIcon
+                      className="-mr-1 ml-2 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </MenuHandler>
+                <MenuList>
+                  <MenuItem>
+                    <Link href="#">Edit Profile</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Link href={`/order/` + session.user.id}>Order Status</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href="#">Previous Order</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    {session.user.isAdmin && (
+                      <Link href="/admin">Admin Dashbord</Link>
+                    )}
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href="#" onClick={logoutClickHandler}>
+                      Logout
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            ) : (
+              <button className="hover:bg-green-100  p-1 px-2 rounded-md">
+                <Link href={"/login"}>Login</Link>
+              </button>
+            )}
+          </div>
+        </div>
+      </Navbar>
+
+        <div className="m-8 place-items-center">{children}</div>
+   
+      <footer className="flex h-10 justify-center items-center shadow-inner">
+        <p>Copyright © 2022 Amazona</p>
+      </footer>
     </div>
   );
 }

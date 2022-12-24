@@ -1,15 +1,88 @@
-{
-  id: 12,
-  productdetails: '[{"id":6,"title":"Choetech USB3.0 USB-C to USB-A Nylon Cable, 1M","stock":"true","boxprice":null,"price":500,"discount":0,"descriptions":"CHOETECH USB C To Type C Cable 3.3ft/1M Cable (XCC-1001) Powerful Backup Charge Cable: 3 amp output as fast as your original USB-C cable. Best choice to backup for home, work or travel. High Speed Syncing: Transfer data to and from all your USB-C devices at speeds of up to 480 Mbps. Reversible Connector: USB-C’s user-friendly design helps you plug and unplug easily without checking for the connector orientation. High Quality: USB type c cable with sturdy construction has connectors with molded strain relief for frequent unplugging and durability.","images":"1670176689966_1e134c85f737bba631225bdfe8260b1c.jpg,1670176689967_Choetech-USB-C-To-Type-C-Cable-3.3ft-1M-Cable-XCC-1001-4.jpg","subcategory_id":16,"qty":1},{"id":10,"title":"Oraimo OSW-23N Smartwatch [1 Year Warranty]","stock":"true","boxprice":null,"price":5700,"discount":0,"descriptions":"<h1>Oraimo OSW-23N Smartwatch</h1><p>Oraimo OSW-23N Smartwatch. Whether you’re pounding the pavement or out for dinner, the oraimo Watch fits perfectly. Both thin and light, it is so comfortable you’ll never want to take it off. A soft, skin-friendly TPU strap makes it comfortable to wear.Records your deep, light sleep and awake time to help you understand the quality of your rest. Then wake up ready in a light vibration to take on the world. Every part of your day matterstrack steps, distance, active minutes, and calories burned. Choose from multiple training modes to get real-time stats, and uses stop watch or timer to count the time during your workouts. It lets you check notifications and control the music right from your wrist all without having to pick up your phone.</p><h2>Features</h2><ul><li>Screen Size: 1.32”</li><li>Version: V5.0</li><li>Battery Capacity: 200mAh</li><li>Battery Type: Lithium polymer</li><li>battery Standby Time: Up to 7 days</li><li>Watch Size: 48.4*45.8*10.45mm</li><li>Weight: 54g</li><li>Material: Al/PC/TPU</li><li>Waterproof Rating: ATM3″</li></ul><h2>Specifications</h2><p><strong>Model</strong>Oraimo OSW-23N<strong>Type</strong>Round<strong>Dimensions</strong>48.4*45.8*10.45mm<strong>Strap Size</strong>&nbsp;<strong>Weight</strong>54g<strong>Waterproof</strong>ATM3<strong>Display Type</strong>Colour Touchscreen<strong>Size</strong>1.32″ Inch<strong>Resolution</strong>360*360 Pixel<strong>Touch Screen</strong>Yes</p>","images":"1670220700699_67b94efd-0516-4c1a-a581-c592deee358a.0a20a67564d20d5f131bc3dcef3598a9.jpeg,1670220700702_Oraimo-OSW-23N-Smartwatch-3.jpg,1670220700702_OSW-23N-2-1.jpg","subcategory_id":20,"qty":1},{"id":12,"title":"G-Tide R1 Bluetooth 5.2 Calling Smart Watch [1 Year Warranty]","stock":"true","boxprice":null,"price":3800,"discount":0,"descriptions":"<h5>Features:</h5><ul><li>1.32-inch&nbsp;HD IPS bigger screen, 360*360</li><li>300mAh&nbsp;big battery, last for 7-10 days</li><li>24/7 heart rate monitor&nbsp;VC52, works accurately same on dark skin</li><li>IP68&nbsp;waterproof, water-resistant up to 10 meters</li><li>24&nbsp;sports modes, record your calories, steps, and distance during exercise with&nbsp;GT FIT Pro APP</li><li>BLE5.2+BLE audio dual mode, Bluetooth call &amp; message notification</li><li>640kb+16MB&nbsp;storage,&nbsp;CTS816T Chip</li><li>Android 4.4 and above and IOS 9.0 and above</li></ul><p>FAQ:</p><p>Q： How to connect to Bluetooth?</p><p>A: The cellphone should download the GT Fit Pro app and turn on the phone’s Bluetooth. Bring your watch closer to your phone, find and connect the watch in the app and make sure that your phone’s Bluetooth is connected to your watch.</p><p>Q： Why can’t I get app notifications?</p><p>A: Once the watch is connected, you must set in the app to allow the smart watch to receive notifications， and keep the “turn on” state of ‘Manually open the notification permissions’ and ‘Accessibility’ in the “App reminder” page&gt;&gt; choose the app. All should allow the GT Fit Pro app to run in your phone’s background at all times.</p><p>Q： Why can’t I get SMS notifications?</p><p>Open your phone’s Bluetooth &gt;&gt; connect your watch via app, you must set in the app to find the “SMS reminder” in the “Device” page to turn on it and authority the GT Fit Pro app running in the background at all times in your phone’s setting.</p><p>Q: How to customize the watch face？</p><p>A: Make sure Bluetooth is connected, then go to “GT Fit Pro” App&gt;&gt; Device&gt;&gt; Dials Faces&gt;&gt; Customize dail&gt;&gt; Select your own image&gt;&gt; Upload your picture.</p><p><img src=\\"https://www.gadstyle.com/wp-content/uploads/2022/11/g-tide-r1-bluetooth-calling-smart-watch-5.webp\\" alt=\\"G Tide R1 Bluetooth Calling Smart Watch (5)\\" height=\\"618\\" width=\\"1000\\"><img src=\\"https://www.gadstyle.com/wp-content/uploads/2022/11/g-tide-r1-bluetooth-calling-smart-watch-4.webp\\" alt=\\"G Tide R1 Bluetooth Calling Smart Watch (4)\\" height=\\"618\\" width=\\"1000\\"><img src=\\"https://www.gadstyle.com/wp-content/uploads/2022/11/g-tide-r1-bluetooth-calling-smart-watch-3.webp\\" alt=\\"G Tide R1 Bluetooth Calling Smart Watch (3)\\" height=\\"618\\" width=\\"1000\\"><img src=\\"https://www.gadstyle.com/wp-content/uploads/2022/11/g-tide-r1-bluetooth-calling-smart-watch-6.webp\\" alt=\\"G Tide R1 Bluetooth Calling Smart Watch (6)\\" height=\\"618\\" width=\\"1000\\"></p>","images":"1670224709544_Oraimo-OSW-23N-Smartwatch-3.jpg,1670224709544_OSW-23N-2-1.jpg","subcategory_id":21,"qty":1}]',
-  extra_information: '"fads"',
-  date: '2022-12-14T18:00:00.000Z',
-  status: 'pending',
-  delivery_location: '[{"division":"Khulna","district":"Meherpur","upozila":" Gangni"}]',
-  user_id: 5
-}
 
-id
-productdetails
-extra_information
+  {status === "loading" ? (
+    "Loading"
+  ) : session?.user ? (
+    
+  ) : (
+    <button className="hover:bg-green-100  p-1 px-2 rounded-md">
+      <Link href={"/login"}>Login</Link>
+    </button>
+  )}
 
-delivery_location
+
+
+
+
+<Menu
+      as="div"
+      className="relative inline-block text-left px-2 "
+    >
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+          <Image
+            src="/profile.svg"
+            alt="alt value"
+            width={20}
+            height={20}
+            className=""
+          ></Image>
+          {session.user.name}
+          <ChevronDownIcon
+            className="-mr-1 ml-2 h-5 w-5"
+            aria-hidden="true"
+          />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                
+              )}
+            </Menu.Item>
+          </div>
+
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+               
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                
+              )}
+            </Menu.Item>
+          </div>
+          
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  href="#"
+                  onClick={logoutClickHandler}
+                  className={classNames(
+                    active
+                      ? "bg-green-100 text-gray-900"
+                      : "text-gray-700",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  Logout
+                </Link>
+              )}
+            </Menu.Item>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>

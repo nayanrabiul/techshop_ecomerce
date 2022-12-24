@@ -1,5 +1,6 @@
 import Slideshow from "../components/slideShow";
 import ShowProductTiles from "../components/showProductTiles";
+import React from "react";
 
 import Layout from "../components/layout";
 import axios from "axios";
@@ -16,8 +17,14 @@ const images = [
 export function Home({ products }) {
   return (
     <Layout>
-      <Slideshow images={images}> </Slideshow>
+      <div className="grid grid-cols-1 ">
+        <Slideshow images={images}> </Slideshow>
+      </div>
+      <div>
+
       <ShowProductTiles products={products}></ShowProductTiles>
+      </div>
+
     </Layout>
   );
 }
